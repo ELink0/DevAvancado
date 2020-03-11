@@ -9,7 +9,7 @@ using namespace std;
 float valorEstoque = 800.00;
 int i;
 int addProdutos ();
-int listarProdutos();
+void listarProdutos(int Produto);
 
 /* Estrutura de Produtos */
 struct produtos_t {
@@ -17,12 +17,16 @@ struct produtos_t {
 	int codigo, qtdestoque;
     double preco;
 };
-produtos_t produtos[100];
+
+list<produtos_t> names;
+
+
 
 
 /* Função Principal */
 int main () 
 {
+    int qtProduto;
     int op = 0;
     if (op == 0) {
         int opcao = 0;
@@ -37,7 +41,7 @@ int main ()
         }
 
         if (opcao == 2) {
-            listarProdutos();
+            listarProdutos(qtProduto);
         }
     }
     return 0;
@@ -46,7 +50,7 @@ int main ()
 /* Função para adicionar produtos */
 int addProdutos () {
         char opCadastrar;
-        int i = 0, qtProdutoCad = 0;
+        int i = 0, produtosCadastrados = 0;
         
         do {
             cout << "\nInforme o nome do produto ";
@@ -63,26 +67,28 @@ int addProdutos () {
 
             printf("\nProduto adicionado com sucesso!\n");
 
-            qtProdutoCad = qtProdutoCad + i;
+            produtosCadastrados = produtosCadastrados + i;
 
             i++;
             
             cout << "\nDeseja cadastrar um novo produto sim(s) ou não(n)? ";
-            cin >> opSub;
+            cin >> opCadastrar;
     
         } while (opCadastrar == 's' || opCadastrar == 'S');
-            return qtProdutoCad;
+            void listarProdutos (int Produto);
+            return produtosCadastrados;
+        while (opCadastrar == 'n' || opCadastrar == 'N');
+            void listarProdutos (int Produto);
 };
 
 /* Função para listar produtos */
-int listarProdutos ()
+void listarProdutos (int Produto)
 {
-    int listar, p;
-    printf("\n\nOi\n\n");
-    if (listar == 1) {
-			for (p=i; p>=0; p--) {
-				printf("Produto %s \nCódigo %i \nQuantidade em estoque %i \nPreço %lf", produtos[i].nome, produtos[i].codigo, produtos[i].qtdestoque, produtos[i].preco);			
-			}
-		}
-    return 0;
+
+    int i, qtProduto;
+    qtProduto = Produto;
+
+    for (i = 0; i < qtProduto; i++) {
+        printf("Produto %s \nCódigo %i \nQuantidade em estoque %i \nPreço %lf\n\n", produtos[i].nome, produtos[i].codigo, produtos[i].qtdestoque, produtos[i].preco);
+    }
 };
